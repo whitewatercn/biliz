@@ -3,7 +3,7 @@ requires = ["hatchling"]
 build-backend = "hatchling.build"
 
 [project]
-name = "bilix"
+name = "biliz"
 dynamic = ["version"]
 description = "⚡️Lightning-fast asynchronous download tool for bilibili and more"
 readme = "README.md"
@@ -38,15 +38,23 @@ dependencies = [
 ]
 
 [project.scripts]
-bilix = "bilix.cli.main:main"
+biliz = "bilix.cli.main:main"
 
 [project.urls]
-Homepage = "https://github.com/HFrost0/bilix"
+Homepage = "https://github.com/whitewatercn/biliz"
+Issues = "https://github.com/whitewatercn/biliz/issues"
+Upstream = "https://github.com/HFrost0/bilix"
 
 [tool.hatch.version]
 path = "bilix/__init__.py"
 
+[tool.hatch.build.targets.wheel]
+packages = ["bilix"]
+
 [tool.hatch.build.targets.sdist]
 include = [
     "/bilix",
+    "/pyproject.toml",
+    "/README.md",
+    "/LICENSE",
 ]
