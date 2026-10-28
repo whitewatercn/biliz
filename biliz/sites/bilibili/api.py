@@ -1,7 +1,7 @@
 import asyncio
 import json
 import re
-from urllib.parse import quote
+from urllib.parse import urlencode
 import httpx
 from pydantic import field_validator, BaseModel, Field
 from typing import Union, List, Tuple, Dict, Optional
@@ -157,10 +157,11 @@ async def _add_sign(client: httpx.AsyncClient, params: dict):
     val = img_val + sub_val
     request_token = ''.join([val[v] for v in OE])[:32]
 
-    wts = int(time.time())
-    params["wts"] = wts
-    data = dict(sorted(params.items()))
-    data_str = "&".join([f"{k}={v}" for k, v in data.items()]) + request_token
+    params.pop("w_rid", None)
+    params["wts"] = round(time.time())
+    data = {k: re.sub(r"[!'()*]", "", str(v)) for k, v in sorted(params.items())}
+    params.update(data)
+    data_str = urlencode(data) + request_token
     md5 = hashlib.md5(data_str.encode("utf-8")).hexdigest()
     params["w_rid"] = md5
     return params
@@ -188,14 +189,34 @@ async def get_up_video_info(client: httpx.AsyncClient, url_or_mid: str, pn=1, ps
     else:
         mid = url_or_mid
 
-    params = {"mid": mid, "order": order, "ps": ps, "pn": pn, "keyword": quote(keyword or "")}
+    params = {"mid": mid, "order": order, "ps": ps, "pn": pn, "keyword": keyword or ""}
     await _add_sign(client, params)
 
-    res = await req_retry(client, "https://api.bilibili.com/x/space/wbi/arc/search", params=params)
-    info = json.loads(res.text)
-    up_name = info["data"]["list"]["vlist"][0]["author"]
-    total_size = info["data"]["page"]["count"]
-    bv_ids = [i["bvid"] for i in info["data"]["list"]["vlist"]]
+    url = "https://api.bilibili.com/x/space/wbi/arc/search"
+    try:
+        res = await req_retry(client, url, params=params, retry=0)
+    except httpx.HTTPStatusError as exc:
+        if exc.response.status_code == 412:
+            raise APIInvalidError(
+                "B站拒绝了UP主投稿请求（HTTP 412），请稍后重试；"
+                "可先在浏览器登录并确认空间页可访问，再使用 -fb edge", mid) from exc
+        raise
+    info = res.json()
+    if info.get("code") != 0:
+        code, message = info.get("code"), info.get("message", "未知错误")
+        hint = ("；请稍后重试，或在浏览器登录并确认空间页可访问后使用 -fb edge"
+                if code in (-352, -412, -101) else "")
+        raise APIInvalidError(f"B站UP主投稿接口错误（{code}）：{message}{hint}", mid)
+    data = info.get("data")
+    if not isinstance(data, dict) or not isinstance(data.get("list"), dict):
+        raise APIInvalidError("B站UP主投稿接口未返回有效列表", mid)
+    videos = data["list"].get("vlist")
+    page = data.get("page")
+    if not isinstance(videos, list) or not isinstance(page, dict) or "count" not in page:
+        raise APIInvalidError("B站UP主投稿接口返回的数据结构不完整", mid)
+    up_name = videos[0]["author"] if videos else str(mid)
+    total_size = page["count"]
+    bv_ids = [i["bvid"] for i in videos]
     return up_name, total_size, bv_ids
 
 
