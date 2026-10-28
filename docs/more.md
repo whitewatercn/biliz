@@ -2,16 +2,16 @@
 
 ## 欢迎提问
 
-如果你发现任何bug或者其他问题，欢迎提[Issue](https://github.com/HFrost0/bilix/issues)。
+如果你发现任何bug或者其他问题，欢迎提[Issue](https://github.com/whitewatercn/biliz/issues)。
 
-如果你有新想法或新的功能请求，欢迎在[Discussion](https://github.com/HFrost0/bilix/discussions)中参与讨论
+如果你有新想法或新的功能请求，欢迎在[Discussion](https://github.com/whitewatercn/biliz/issues)中参与讨论
 
-如果觉得该项目对你有所帮助，可以给作者一个小小的[Star](https://github.com/HFrost0/bilix/stargazers)🌟
+如果觉得该项目对你有所帮助，可以给作者一个小小的[Star](https://github.com/whitewatercn/biliz/stargazers)🌟
 
 
 ## 参与贡献
 
-❤️ 非常欢迎～详情可见[contributing](https://github.com/HFrost0/bilix/blob/master/CONTRIBUTING.md)
+❤️ 非常欢迎～详情可见[contributing](https://github.com/whitewatercn/biliz/blob/master/CONTRIBUTING.md)
 
 ## 已知的bug 🤡
 

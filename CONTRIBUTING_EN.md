@@ -1,7 +1,7 @@
-# Development guide of bilix
+# Development guide of biliz
 
-Thank you for your interest in contributing to bilix. Before you start, you can read some tips below.
-Please note that bilix is rapidly iterating, if you find some content outdated while reading this document,
+Thank you for your interest in contributing to biliz. Before you start, you can read some tips below.
+Please note that biliz is rapidly iterating, if you find some content outdated while reading this document,
 please refer to the code of the master branch.
 
 # Before starting
@@ -9,7 +9,7 @@ please refer to the code of the master branch.
 Before everything starts, you need to first **fork** this repository, and then clone your fork:
 
 ```shell
-git clone https://github.com/your_user_name/bilix
+git clone https://github.com/your_user_name/biliz
 ```
 
 After clone, I **recommend** you to test and develop in an independent python environment,
@@ -19,15 +19,15 @@ and then perform local source editable installation after that:
 pip install -e .
 ```
 
-Try whether the `bilix` command can be executed normally. Passed the test? At this point,
-you can develop bilix locally🍻
+Try whether the `biliz` command can be executed normally. Passed the test? At this point,
+you can develop biliz locally🍻
 
-# Structure of bilix
+# Structure of biliz
 
-Before making any changes to the code, you need to have some understanding of the structure of bilix.
+Before making any changes to the code, you need to have some understanding of the structure of biliz.
 
 ```text
-bilix
+biliz
 ├── __init__.py
 ├── __main__.py
 ├── _process.py  # related to multiprocessing
@@ -57,16 +57,16 @@ bilix
 
 # BaseDownloader
 
-bilix provides two basic downloaders in `bilix.download`, m3u8 downloader and content range file downloader.
+biliz provides two basic downloaders in `biliz.download`, m3u8 downloader and content range file downloader.
 They are based on `httpx` and even lower-level `asyncio` and IO multiplexing, and integrate many practical functions
 such as speed control, concurrency control, download resume, time range clip, and progress bar display.
-The site extension of bilix will be based on these basic downloaders, and the basic downloaders
+The site extension of biliz will be based on these basic downloaders, and the basic downloaders
 themselves also provide cli services
 
 
 # How does the downloader provide cli service
 
-In bilix, as long as a class implements the `handle` method, it can be registered in the command line interface (cli).
+In biliz, as long as a class implements the `handle` method, it can be registered in the command line interface (cli).
 The function signature of the `handle` method is
 
 ```python
@@ -96,7 +96,7 @@ instance and coroutine according to the command line arguments, options and type
 
 # How to add support for a site
 
-Under `bilix/sites`, there are already some sites supported, if you want to add a new site support, you can follow the steps below:
+Under `biliz/sites`, there are already some sites supported, if you want to add a new site support, you can follow the steps below:
 
 1. Create a new site folder under the `sites` folder, such as `example`
 2. Add the site's api module `api.py` under the `example` folder, and follow the format of other sites to implement various APIs from input webpage url to output video url and video title
@@ -104,9 +104,9 @@ Under `bilix/sites`, there are already some sites supported, if you want to add 
 4. Add the site downloader `donwloader.py` under the `example` folder, define `DownloaderExample`
    Class, select the corresponding `BaseDownloader` to inherit according to the site, then define the method of downloading the video in the class, and implement `handle`
    method.
-5. Add `__init__.py` under the `example` folder, import `DownloaderExample` class, and add `DownloaderExample` in `__all__` to facilitate bilix to find your downloader
+5. Add `__init__.py` under the `example` folder, import `DownloaderExample` class, and add `DownloaderExample` in `__all__` to facilitate biliz to find your downloader
 
 Okay, let's test it
 
-At present, other developers have contributed to the extension of bilix to other sites🎉,
+At present, other developers have contributed to the extension of biliz to other sites🎉,
 Maybe the accepted [New site PR](https://github.com/HFrost0/bilix/pulls?q=is%3Apr+is%3Aclosed+label%3A%22New+site%22) can also help you

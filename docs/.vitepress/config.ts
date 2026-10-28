@@ -2,26 +2,21 @@ import {defineConfig} from 'vitepress'
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
-  title: "bilix",
-  description: "bilix download",
-  base: '/bilix/',
+  title: "biliz",
+  description: "biliz download",
+  base: '/biliz/',
   lastUpdated: true,
   themeConfig: {
     // https://vitepress.dev/reference/default-theme-config
     editLink: {
-      pattern: 'https://github.com/HFrost0/bilix/edit/master/docs/:path'
-    },
-    algolia: {
-      appId: 'F4ZDY9KUXU',
-      apiKey: '30aaace8ddea0d6f25ac39ea70ce8bd8',
-      indexName: 'bilix'
+      pattern: 'https://github.com/whitewatercn/biliz/edit/master/docs/:path'
     },
     footer: {
       message: 'Released under the Apache 2.0 License.',
       copyright: 'Copyright © 2022-present HFrost0'
     },
     socialLinks: [
-      {icon: 'github', link: 'https://github.com/HFrost0/bilix'}
+      {icon: 'github', link: 'https://github.com/whitewatercn/biliz'}
     ]
   },
 

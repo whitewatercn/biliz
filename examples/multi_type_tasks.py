@@ -6,7 +6,7 @@ The concurrency is strictly constrained by the downloader object, so it will not
 the site server.
 """
 import asyncio
-from bilix.sites.bilibili import DownloaderBilibili
+from biliz.sites.bilibili import DownloaderBilibili
 
 
 async def main():

@@ -2,16 +2,16 @@
 
 ## Community
 
-If you find any bugs or other issues, feel free to raise an [Issue](https://github.com/HFrost0/bilix/issues).
+If you find any bugs or other issues, feel free to raise an [Issue](https://github.com/whitewatercn/biliz/issues).
 
 If you have new ideas or new feature requests，welcome to participate in
-the [Discussion](https://github.com/HFrost0/bilix/discussions)
+the [Discussion](https://github.com/whitewatercn/biliz/issues)
 
-If you find this project helpful, you can support the author by [Star](https://github.com/HFrost0/bilix/stargazers)🌟
+If you find this project helpful, you can support the author by [Star](https://github.com/whitewatercn/biliz/stargazers)🌟
 
 ## Contribute
 
-❤️ Welcome~ Details can be found in [Contributing](https://github.com/HFrost0/bilix/blob/master/CONTRIBUTING_EN.md)
+❤️ Welcome~ Details can be found in [Contributing](https://github.com/whitewatercn/biliz/blob/master/CONTRIBUTING_EN.md)
 
 ## Known Bugs 🤡
 

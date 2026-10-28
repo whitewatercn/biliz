@@ -3,7 +3,7 @@
 layout: home
 
 hero:
-  name: "bilix"
+  name: "biliz"
   tagline: Lightning-fast asynchronous download tool for bilibili and more
   actions:
     - theme: brand

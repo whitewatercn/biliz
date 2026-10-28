@@ -9,6 +9,8 @@
 
 biliz is a fork of [HFrost0/bilix](https://github.com/HFrost0/bilix), published on PyPI as `biliz`.
 
+[Documentation](https://whitewatercn.github.io/biliz/)
+
 ## Features
 
 ### ⚡️ Fast & Async
@@ -51,10 +53,10 @@ biliz v 'url'
 
 * If you prefer to code with python
 
-The Python import namespace remains `bilix` after installing `biliz`.
+The Python import namespace is `biliz`.
 
 ```python
-from bilix.sites.bilibili import DownloaderBilibili
+from biliz.sites.bilibili import DownloaderBilibili
 import asyncio
 
 

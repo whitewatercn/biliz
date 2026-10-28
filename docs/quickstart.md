@@ -1,15 +1,15 @@
 # 快速上手
 
-bilix提供了简单的命令行使用方式，打开终端开始下载吧～
+biliz提供了简单的命令行使用方式，打开终端开始下载吧～
 
 ## 批量下载
 
 批量下载整部动漫，电视剧，纪录片，电影，up投稿.....只需要把命令中的`url`替换成你要下载的系列中任意一个视频的网页链接。\
 到 bilibili 上找一个来试试吧～，比如这个李宏毅老师的机器学习视频：[链接](https://www.bilibili.com/video/BV1JE411g7XF)，
-`bilix`会下载文件至命令行当前目录的`videos`文件夹中，默认自动创建。
+`biliz`会下载文件至命令行当前目录的`videos`文件夹中，默认自动创建。
 
 ```shell
-bilix get_series 'url'
+biliz get_series 'url'
 ```
 
 `get_series`很强大，会自动识别系列所有视频并下载，当然，如果该系列只有一个视频（比如单p投稿）也是可以正常下载的。
@@ -25,7 +25,7 @@ bilix get_series 'url'
 用户😨：我不想下载那么多，只想下载单个视频。没问题，试试这个，只需要提供那个视频的网页链接：
 
 ```shell
-bilix get_video 'url'
+biliz get_video 'url'
 ```
 :::info
 你知道吗？`get_series` `get_video`方法名都有[简写](/advance_guide)
@@ -38,7 +38,7 @@ bilix get_video 'url'
 一个钢琴曲合集音频的例子
 
 ```shell
-bilix get_series 'https://www.bilibili.com/video/BV1ts411D7mf' --only-audio
+biliz get_series 'https://www.bilibili.com/video/BV1ts411D7mf' --only-audio
 ```
 
 ## 切片下载
@@ -46,7 +46,7 @@ bilix get_series 'https://www.bilibili.com/video/BV1ts411D7mf' --only-audio
 视频，直播录像太长，我需要下载我感兴趣的片段✂️，那么可以使用`--time-range -tr`参数指定时间段下载切片
 
 ```shell
-bilix get_vedio 'url' -tr 0:16:53-0:17:49
+biliz get_video 'url' -tr 0:16:53-0:17:49
 ```
 
 这个例子中指定了16分53秒至17分49秒的片段。 `-tr`参数的格式为`h:m:s-h:m:s`，起始时间和结束时间以`-`分割，时分秒以`:`
@@ -59,7 +59,7 @@ bilix get_vedio 'url' -tr 0:16:53-0:17:49
 假设你是一个嘉心糖，想要下载嘉然小姐最新投稿的100个视频，那么你可以使用命令：
 
 ```shell
-bilix get_up 'https://space.bilibili.com/672328094' --num 100
+biliz get_up 'https://space.bilibili.com/672328094' --num 100
 ```
 
 `https://space.bilibili.com/672328094` 是up空间页url，另外用up主id`672328094`替换url同样也是可以的
@@ -69,17 +69,17 @@ bilix get_up 'https://space.bilibili.com/672328094' --num 100
 假设你喜欢看舞蹈区👍，想要下载最近30天播放量最高的20个超级敏感宅舞视频，那么你可以使用
 
 ```shell
-bilix get_cate 宅舞 --keyword 超级敏感 --order click --num 20 --days 30
+biliz get_cate 宅舞 --keyword 超级敏感 --order click --num 20 --days 30
 ```
 
-`get_cate`支持b站的每个子分区，可以使用排序，关键词搜索等，详细请参考`bilix -h`或代码注释
+`get_cate`支持b站的每个子分区，可以使用排序，关键词搜索等，详细请参考`biliz -h`或代码注释
 
 ## 下载收藏夹视频
 
 如果你需要下载自己或者其他人收藏夹中的视频，你可以使用`get_favour`方法
 
 ```shell
-bilix get_favour 'https://space.bilibili.com/11499954/favlist?fid=1445680654' --num 20
+biliz get_favour 'https://space.bilibili.com/11499954/favlist?fid=1445680654' --num 20
 ```
 
 `https://space.bilibili.com/11499954/favlist?fid=1445680654` 是收藏夹url，如果要知道一个收藏夹的url是什么，
@@ -91,7 +91,7 @@ bilix get_favour 'https://space.bilibili.com/11499954/favlist?fid=1445680654' --
 如果你需要下载up主发布的合集或视频列表，你可以使用`get_collect`方法
 
 ```shell
-bilix get_collect 'url'
+biliz get_collect 'url'
 ```
 
 将`url`替换为某个合集或视频列表详情页的url（例如[这个](https://space.bilibili.com/369750017/channel/collectiondetail?sid=630)）即可下载合集或列表内所有视频
@@ -106,5 +106,5 @@ bilix get_collect 'url'
 在命令中加入可选参数`--subtitle`（字幕） `--dm`（弹幕） `--image`（封面），即可下载这些附属文件
 
 ```shell
-bilix get_series 'url' --subtitle --dm --image
+biliz get_series 'url' --subtitle --dm --image
 ```

@@ -38,7 +38,7 @@ dependencies = [
 ]
 
 [project.scripts]
-biliz = "bilix.cli.main:main"
+biliz = "biliz.cli.main:main"
 
 [project.urls]
 Homepage = "https://github.com/whitewatercn/biliz"
@@ -46,14 +46,14 @@ Issues = "https://github.com/whitewatercn/biliz/issues"
 Upstream = "https://github.com/HFrost0/bilix"
 
 [tool.hatch.version]
-path = "bilix/__init__.py"
+path = "biliz/__init__.py"
 
 [tool.hatch.build.targets.wheel]
-packages = ["bilix"]
+packages = ["biliz"]
 
 [tool.hatch.build.targets.sdist]
 include = [
-    "/bilix",
+    "/biliz",
     "/pyproject.toml",
     "/README.md",
     "/LICENSE",

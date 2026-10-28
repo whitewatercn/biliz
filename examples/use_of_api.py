@@ -1,11 +1,11 @@
 """
-bilix 提供了各个网站的api，如果你有需要当然可以使用，并且它们都是异步的
+biliz 提供了各个网站的api，如果你有需要当然可以使用，并且它们都是异步的
 
-bilix provides api for various websites. You can use them if you need, and they are asynchronous
+biliz provides api for various websites. You can use them if you need, and they are asynchronous
 """
 import asyncio
 
-from bilix.sites.bilibili import api
+from biliz.sites.bilibili import api
 from httpx import AsyncClient
 
 
