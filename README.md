@@ -1,9 +1,8 @@
 # biliz
 
 [![GitHub license](https://img.shields.io/github/license/whitewatercn/biliz?style=flat-square)](https://github.com/whitewatercn/biliz/blob/master/LICENSE)
-[![PyPI](https://img.shields.io/pypi/v/biliz?style=flat-square&color=blue)](https://pypi.org/project/biliz/)
+[![PyPI](https://img.shields.io/pypi/v/biliz?style=flat-square&color=blue&cacheSeconds=300)](https://pypi.org/project/biliz/)
 [![GitHub commit activity](https://img.shields.io/github/commit-activity/m/whitewatercn/biliz)](https://github.com/whitewatercn/biliz/commits/master/)
-[![PyPI - Downloads](https://img.shields.io/pypi/dm/biliz?label=pypi%20downloads&style=flat-square)](https://pypi.org/project/biliz/)
 
 ⚡️Lightning-fast asynchronous download tool for bilibili and more
 
