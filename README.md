@@ -7,6 +7,8 @@
 
 ⚡️Lightning-fast asynchronous download tool for bilibili and more
 
+本项目 biliz 源自 [HFrost0/bilix](https://github.com/HFrost0/bilix)，在其基础上继续维护和改进，并以 `biliz` 发布到 PyPI。感谢原作者及贡献者的开源工作。本项目遵循 Apache 2.0 协议。
+
 biliz is a fork of [HFrost0/bilix](https://github.com/HFrost0/bilix), published on PyPI as `biliz`.
 
 [Documentation](https://whitewatercn.github.io/biliz/)
