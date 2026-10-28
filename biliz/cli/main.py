@@ -11,7 +11,7 @@ from ..log import logger
 from .assign import assign
 from ..progress.cli_progress import CLIProgress
 from ..utils import parse_bytes_str, s2t
-from ..exception import HandleError
+from ..exception import HandleError, APIInvalidError
 
 
 def handle_help(ctx: click.Context, param: typing.Union[click.Option, click.Parameter], value: typing.Any, ) -> None:
@@ -372,6 +372,8 @@ def main(**kwargs):
             logger.info(f'Directory {kwargs["path"]} not exists, auto created')
         executor, cor = assign(kwargs)
         loop.run_until_complete(cor)
+    except APIInvalidError as e:
+        raise click.ClickException(str(e)) from e
     except HandleError as e:  # method no match
         logger.error(e)
     except KeyboardInterrupt:
