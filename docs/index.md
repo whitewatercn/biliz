@@ -3,7 +3,7 @@
 layout: home
 
 hero:
-  name: "bilix"
+  name: "biliz"
   tagline: 快如闪电的异步下载工具，支持bilibili及更多
   actions:
     - theme: brand

@@ -7,13 +7,13 @@ on:
   push:
     paths:
       - '.github/workflows/python-app.yml'
-      - 'bilix/**'
+      - 'biliz/**'
       - 'pyproject.toml'
     branches: [ "master" ]
   pull_request:
     paths:
       - '.github/workflows/python-app.yml'
-      - 'bilix/**'
+      - 'biliz/**'
       - 'pyproject.toml'
     branches: [ "master" ]
 

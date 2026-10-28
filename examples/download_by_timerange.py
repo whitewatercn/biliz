@@ -4,7 +4,7 @@ You can download just a small clip of the video
 """
 import asyncio
 
-from bilix.sites.bilibili import DownloaderBilibili
+from biliz.sites.bilibili import DownloaderBilibili
 
 
 async def main():

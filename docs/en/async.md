@@ -1,6 +1,6 @@
 # Async basic
 Asynchronous programming in Python excels at handling network requests with high concurrency.
-Before using bilix in Python, you need to have some understanding of asynchronous programming in Python.
+Before using biliz in Python, you need to have some understanding of asynchronous programming in Python.
 The official Python [asyncio](https://docs.python.org/3/library/asyncio.html) library provides support for asynchronous I/O.
 
 ```python
@@ -25,10 +25,10 @@ import asyncio
 "hello world"
 ```
 
-All download methods of bilix are asynchronous, so you can execute them like this
+All download methods of biliz are asynchronous, so you can execute them like this
 ```python
 import asyncio
-from bilix.sites.bilibili import DownloaderBilibili
+from biliz.sites.bilibili import DownloaderBilibili
 
 d = DownloaderBilibili()
 asyncio.run(d.get_video('url'))

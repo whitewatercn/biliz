@@ -1,11 +1,11 @@
 """
-使用bilix在python中最简单的实践🤖
-The simplest practice of using bilix in python
+使用biliz在python中最简单的实践🤖
+The simplest practice of using biliz in python
 """
 import asyncio
 # 导入下载器，里面有很多方法，例如get_series, get_video, get_favour，get_dm等等，总能找到符合你需求的
 # downloader with many method like get_series, get_video...
-from bilix.sites.bilibili import DownloaderBilibili
+from biliz.sites.bilibili import DownloaderBilibili
 
 
 async def main():

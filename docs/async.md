@@ -1,6 +1,6 @@
 # 异步基础
 异步无疑是python中处理网络请求的最佳技术，因为它可以承载极高的并发量。
-在python中使用bilix之前，你需要先对python中的异步编程有一些了解。python官方使用[asyncio](https://docs.python.org/3/library/asyncio.html)
+在python中使用biliz之前，你需要先对python中的异步编程有一些了解。python官方使用[asyncio](https://docs.python.org/3/library/asyncio.html)
 提供异步I/O的支持。
 
 ```python
@@ -26,10 +26,10 @@ import asyncio
 "hello world"
 ```
 
-bilix的所有下载方法都是异步的，所以你也可以这样执行他们
+biliz的所有下载方法都是异步的，所以你也可以这样执行他们
 ```python
 import asyncio
-from bilix.sites.bilibili import DownloaderBilibili
+from biliz.sites.bilibili import DownloaderBilibili
 
 d = DownloaderBilibili()
 asyncio.run(d.get_video('url'))

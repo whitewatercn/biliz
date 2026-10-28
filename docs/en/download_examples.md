@@ -1,13 +1,13 @@
 # Download Examples
 
-Command line is too cumbersome and not powerful enough for you? bilix can be used as a Python library
+Command line is too cumbersome and not powerful enough for you? biliz can be used as a Python library
 with user-friendly interfaces and enhanced functionality for greater flexibility.
 
 ## Start with the simplest
 
 ```python
 import asyncio
-from bilix.sites.bilibili import DownloaderBilibili
+from biliz.sites.bilibili import DownloaderBilibili
 
 
 async def main():
@@ -28,7 +28,7 @@ The concurrency is strictly restricted by the downloader object, ensuring no une
 
 ```python
 import asyncio
-from bilix.sites.bilibili import DownloaderBilibili
+from biliz.sites.bilibili import DownloaderBilibili
 
 
 async def main():
@@ -54,7 +54,7 @@ You can download just a clip of the video
 
 ```python
 import asyncio
-from bilix.sites.bilibili import DownloaderBilibili
+from biliz.sites.bilibili import DownloaderBilibili
 
 
 async def main():
@@ -77,8 +77,8 @@ maximize the use of your network resources.
 
 ```python
 import asyncio
-from bilix.sites.bilibili import DownloaderBilibili
-from bilix.sites.cctv import DownloaderCctv
+from biliz.sites.bilibili import DownloaderBilibili
+from biliz.sites.cctv import DownloaderCctv
 
 
 async def main():
@@ -101,8 +101,8 @@ The following example limits the total download speed below 1MB/s
 
 ```python
 import asyncio
-from bilix.sites.bilibili import DownloaderBilibili
-from bilix.sites.cctv import DownloaderCctv
+from biliz.sites.bilibili import DownloaderBilibili
+from biliz.sites.cctv import DownloaderCctv
 
 
 async def main():
@@ -132,7 +132,7 @@ async def main():
 When using the python module, the progress bar is not displayed by default. If you want to display it, you can
 
 ```python
-from bilix.progress.cli_progress import CLIProgress
+from biliz.progress.cli_progress import CLIProgress
 
 CLIProgress.start()
 ```

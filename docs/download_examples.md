@@ -1,13 +1,13 @@
 # 下载案例
 
-觉得命令行太麻烦，不够强大？bilix可做为python的库调用，并且接口设计易用，功能更强大，这给了你很大的扩展空间
+觉得命令行太麻烦，不够强大？biliz可做为python的库调用，并且接口设计易用，功能更强大，这给了你很大的扩展空间
 
 ## 从最简单的开始
 
 ```python
 import asyncio
 # 导入下载器，里面有很多方法，例如get_series, get_video, get_favour，get_dm等等
-from bilix.sites.bilibili import DownloaderBilibili
+from biliz.sites.bilibili import DownloaderBilibili
 
 
 async def main():
@@ -28,7 +28,7 @@ if __name__ == '__main__':
 
 ```python
 import asyncio
-from bilix.sites.bilibili import DownloaderBilibili
+from biliz.sites.bilibili import DownloaderBilibili
 
 
 async def main():
@@ -54,7 +54,7 @@ if __name__ == '__main__':
 
 ```python
 import asyncio
-from bilix.sites.bilibili import DownloaderBilibili
+from biliz.sites.bilibili import DownloaderBilibili
 
 
 async def main():
@@ -75,8 +75,8 @@ if __name__ == '__main__':
 
 ```python
 import asyncio
-from bilix.sites.bilibili import DownloaderBilibili
-from bilix.sites.cctv import DownloaderCctv
+from biliz.sites.bilibili import DownloaderBilibili
+from biliz.sites.cctv import DownloaderCctv
 
 
 async def main():
@@ -98,8 +98,8 @@ if __name__ == '__main__':
 
 ```python
 import asyncio
-from bilix.sites.bilibili import DownloaderBilibili
-from bilix.sites.cctv import DownloaderCctv
+from biliz.sites.bilibili import DownloaderBilibili
+from biliz.sites.cctv import DownloaderCctv
 
 
 async def main():
@@ -129,7 +129,7 @@ async def main():
 使用python模块时，进度条默认不显示，如需显示，可以
 
 ```python
-from bilix.progress.cli_progress import CLIProgress
+from biliz.progress.cli_progress import CLIProgress
 
 CLIProgress.start()
 ```

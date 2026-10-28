@@ -1,15 +1,12 @@
 # 安装
-bilix是一个强大的Python异步视频下载工具，安装它需要完成两个步骤：
+biliz是一个强大的Python异步视频下载工具，安装它需要完成两个步骤：
 
 1. pip安装（需要python3.8及以上）
    ```shell
-   pip install bilix
+   uv tool install biliz
+   # 或 / or: pip install biliz
    ```
    
-   如果你是macOS用户，也可以使用`brew`安装：
-   ```shell
-    brew install bilix
-    ```
 
 2. [FFmpeg](https://ffmpeg.org) ：一个命令行视频工具，用于合成下载的音频和视频
 

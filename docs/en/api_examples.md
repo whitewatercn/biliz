@@ -1,8 +1,8 @@
 # API Examples
-bilix provides the APIs of various websites, and they are all asynchronous
+biliz provides the APIs of various websites, and they are all asynchronous
 ```python
 import asyncio
-from bilix.sites.bilibili import api
+from biliz.sites.bilibili import api
 from httpx import AsyncClient
 
 
