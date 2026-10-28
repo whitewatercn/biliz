@@ -24,7 +24,7 @@ def handle_help(ctx: click.Context, param: typing.Union[click.Option, click.Para
 def handle_version(ctx: click.Context, param: typing.Union[click.Option, click.Parameter], value: typing.Any, ) -> None:
     if not value or ctx.resilient_parsing:
         return
-    print(f"Version {__version__}")
+    print(f"biliz {__version__}")
     ctx.exit()
 
 
@@ -39,10 +39,10 @@ def handle_debug(ctx: click.Context, param: typing.Union[click.Option, click.Par
 
 def print_help():
     console = rich.console.Console()
-    console.print(f"\n[bold]bilix {__version__}", justify="center")
+    console.print(f"\n[bold]biliz {__version__}", justify="center")
     console.print("⚡️快如闪电的bilibili下载工具，基于Python现代Async特性，高速批量下载整部动漫，电视剧，up投稿等\n",
                   justify="center")
-    console.print("使用方法： bilix [cyan]<method> <key1, key2...> [OPTIONS][/cyan] ", justify="left")
+    console.print("使用方法： biliz [cyan]<method> <key1, key2...> [OPTIONS][/cyan] ", justify="left")
     table = Table.grid(padding=1, pad_edge=False)
     table.add_column("Parameter", no_wrap=True, justify="left", style="bold")
     table.add_column("Description")
