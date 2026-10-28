@@ -369,8 +369,12 @@ def _parse_bv_html(url, html: str) -> VideoInfo:
         pages.append(Page(p_name=p_name, p_url=p_url))
     # extract dash and flv_url
     dash, other = None, []
-    play_info = re.search('<script>window.__playinfo__=({.*?})</script><script>', html).groups()[0]
-    play_info = json.loads(play_info)['data']
+    play_info_match = re.search('<script>window.__playinfo__=({.*?})</script><script>', html)
+    if play_info_match is None:
+        # Some BV pages include metadata but no embedded playback data.
+        # Let get_video_info use the existing playback API fallback.
+        raise APIInvalidError("网页未包含播放信息，尝试 API", url)
+    play_info = json.loads(play_info_match.group(1))['data']
     try:
         dash = Dash.from_dict(play_info)
     except KeyError:
