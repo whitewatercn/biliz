@@ -1,5 +1,9 @@
 # More
 
+## Project origin
+
+biliz is a fork of [HFrost0/bilix](https://github.com/HFrost0/bilix), with continued maintenance and improvements. Thanks to the original author and contributors for their open-source work. This project is licensed under Apache 2.0.
+
 ## Community
 
 If you find any bugs or other issues, feel free to raise an [Issue](https://github.com/whitewatercn/biliz/issues).
