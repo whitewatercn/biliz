@@ -2,6 +2,7 @@ import asyncio
 import functools
 import re
 from pathlib import Path
+from urllib.parse import parse_qs, urlsplit
 from typing import Union, Sequence, Tuple, List
 import aiofiles
 import httpx
@@ -75,6 +76,8 @@ class DownloaderBilibili(BaseDownloaderPart):
             return cls.get_collect_or_list
         elif re.match(r'https://space\.bilibili\.com/\d+/channel/collectiondetail\?sid=\d+', url):
             return cls.get_collect_or_list
+        elif re.match(r'https://space\.bilibili\.com/\d+/lists/\d+(?:[/?#]|$)', url):
+            return cls.get_collect_or_list
         elif re.match(r'https://space\.bilibili\.com/\d+', url):  # up space url
             return cls.get_up
         elif re.search(r'(www\.bilibili\.com)|(b23\.tv)', url):
@@ -96,6 +99,16 @@ class DownloaderBilibili(BaseDownloaderPart):
         :param codec:
         :return:
         """
+        parsed_url = urlsplit(url)
+        modern_list = re.fullmatch(r'/(\d+)/lists/(\d+)/?', parsed_url.path)
+        if modern_list:
+            list_type = parse_qs(parsed_url.query).get('type', [''])[0]
+            detail = {'season': 'collectiondetail', 'series': 'seriesdetail'}.get(list_type)
+            if detail is None:
+                raise ValueError(f'{url} invalid list type: expected season or series')
+            mid, sid = modern_list.groups()
+            # Reuse the legacy API parsers, which expect the list ID in sid.
+            url = f'https://space.bilibili.com/{mid}/channel/{detail}?sid={sid}'
         if 'series' in url:
             list_name, up_name, bvids = await api.get_list_info(self.client, url)
             name = legal_title(f"【视频列表】{up_name}", list_name)
