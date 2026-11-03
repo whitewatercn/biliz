@@ -108,19 +108,9 @@ biliz up 'up_url1' 'up_url2'
 当你提供多个`url`时，并发控制当然也正常工作
 
 
-## 更多站点支持
-biliz除了b站以外也支持了一些别的站点，但作者精力有限，所以失效也不奇怪。具体可见[discussion](https://github.com/HFrost0/bilix/discussions/39)
+## 支持范围
 
-## 基本下载方法
-对于一些基本的下载场景
-* 你可以直接通过文件链接下载
-  ```shell
-  biliz f 'https://xxxx.com/xxxx.mp4'
-  ```
-* 你可以通过m3u8 url直接下载m3u8视频
-  ```shell
-  biliz m3u8 'https:/xxxx.com/xxxx.m3u8'
-  ```
+biliz 仅支持哔哩哔哩（含 b23.tv 短链接）。其他网站以及通用文件、M3U8 链接下载已停止支持。
 
 ## 代理
 biliz默认使用系统代理

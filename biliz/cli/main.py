@@ -40,7 +40,7 @@ def handle_debug(ctx: click.Context, param: typing.Union[click.Option, click.Par
 def print_help():
     console = rich.console.Console()
     console.print(f"\n[bold]biliz {__version__}", justify="center")
-    console.print("⚡️快如闪电的bilibili下载工具，基于Python现代Async特性，高速批量下载整部动漫，电视剧，up投稿等\n",
+    console.print("⚡️仅支持哔哩哔哩的异步下载工具，基于Python现代Async特性，高速批量下载整部动漫，电视剧，up投稿等\n",
                   justify="center")
     console.print("使用方法： biliz [cyan]<method> <key1, key2...> [OPTIONS][/cyan] ", justify="left")
     table = Table.grid(padding=1, pad_edge=False)
@@ -372,10 +372,8 @@ def main(**kwargs):
             logger.info(f'Directory {kwargs["path"]} not exists, auto created')
         executor, cor = assign(kwargs)
         loop.run_until_complete(cor)
-    except APIInvalidError as e:
+    except (APIInvalidError, HandleError) as e:
         raise click.ClickException(str(e)) from e
-    except HandleError as e:  # method no match
-        logger.error(e)
     except KeyboardInterrupt:
         logger.info('[cyan]提示：用户中断，重复执行命令可继续下载')
     finally:

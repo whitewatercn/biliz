@@ -1,5 +1,5 @@
 # API Examples
-biliz provides the APIs of various websites, and they are all asynchronous
+biliz provides asynchronous APIs for Bilibili.
 ```python
 import asyncio
 from biliz.sites.bilibili import api

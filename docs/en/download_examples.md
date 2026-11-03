@@ -69,40 +69,13 @@ if __name__ == '__main__':
 
 ```
 
-## Download from multiple sites simultaneously
-
-You can initialize downloaders for different websites, and use the coroutine objects returned by their
-methods for concurrent downloads. The concurrency control between different downloaders is independent, allowing you to
-maximize the use of your network resources.
-
-```python
-import asyncio
-from biliz.sites.bilibili import DownloaderBilibili
-from biliz.sites.cctv import DownloaderCctv
-
-
-async def main():
-    async with DownloaderBilibili() as d_bl, DownloaderCctv() as d_tv:
-        await asyncio.gather(
-            d_bl.get_video('https://www.bilibili.com/video/BV1cd4y1Z7EG', quality=999),
-            d_tv.get_video('https://tv.cctv.com/2012/05/02/VIDE1355968282695723.shtml', quality=999)
-        )
-
-
-if __name__ == '__main__':
-    asyncio.run(main())
-
-```
-
 ## Limit download speed
 
-Limiting the download speed is very simple.
-The following example limits the total download speed below 1MB/s
+Set `speed_limit` in bytes per second when creating the downloader. This example limits downloads to 1 MB/s.
 
 ```python
 import asyncio
 from biliz.sites.bilibili import DownloaderBilibili
-from biliz.sites.cctv import DownloaderCctv
 
 
 async def main():
@@ -110,21 +83,8 @@ async def main():
         await d.get_series("https://www.bilibili.com/video/BV1jK4y1N7ST?p=5")
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     asyncio.run(main())
-
-```
-
-In addition, the speed settings between downloaders are also independent
-
-```python
-async def main():
-    # 就像并发控制一样，每个downloader的速度设置也是独立的
-    async with DownloaderBilibili(speed_limit=1e6) as bili_d, DownloaderCctv(speed_limit=3e6) as cctv_d:
-        await asyncio.gather(
-            bili_d.get_series('https://www.bilibili.com/video/BV1cd4y1Z7EG'),
-            cctv_d.get_series('https://www.douyin.com/video/7132430286415252773')
-        )
 ```
 
 ## Show progress bar

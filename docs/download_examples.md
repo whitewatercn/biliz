@@ -69,37 +69,13 @@ if __name__ == '__main__':
 
 ```
 
-## 同时下载多个站点
-
-你可以同时初始化不同网站的下载器，并且利用他们方法返回的协程对象进行并发下载。各个下载器之间的并发控制是独立的，因此可以最大化利用自己的网络资源。
-
-```python
-import asyncio
-from biliz.sites.bilibili import DownloaderBilibili
-from biliz.sites.cctv import DownloaderCctv
-
-
-async def main():
-    async with DownloaderBilibili() as d_bl, DownloaderCctv() as d_tv:
-        await asyncio.gather(
-            d_bl.get_video('https://www.bilibili.com/video/BV1cd4y1Z7EG', quality=999),
-            d_tv.get_video('https://tv.cctv.com/2012/05/02/VIDE1355968282695723.shtml', quality=999)
-        )
-
-
-if __name__ == '__main__':
-    asyncio.run(main())
-
-```
-
 ## 限制下载速度
 
-限制下载速度很简单，下面的例子限制了b站点总下载速度在1MB/s以下
+创建下载器时设置 `speed_limit`，单位为字节/秒。以下示例限制为 1 MB/s。
 
 ```python
 import asyncio
 from biliz.sites.bilibili import DownloaderBilibili
-from biliz.sites.cctv import DownloaderCctv
 
 
 async def main():
@@ -107,21 +83,8 @@ async def main():
         await d.get_series("https://www.bilibili.com/video/BV1jK4y1N7ST?p=5")
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     asyncio.run(main())
-
-```
-
-另外，多个下载器之间的速度设置也是独立的
-
-```python
-async def main():
-    # 就像并发控制一样，每个downloader的速度设置也是独立的
-    async with DownloaderBilibili(speed_limit=1e6) as bili_d, DownloaderCctv(speed_limit=3e6) as cctv_d:
-        await asyncio.gather(
-            bili_d.get_series('https://www.bilibili.com/video/BV1cd4y1Z7EG'),
-            cctv_d.get_series('https://www.douyin.com/video/7132430286415252773')
-        )
 ```
 
 ## 显示进度条

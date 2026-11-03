@@ -114,21 +114,9 @@ biliz up 'up_url1' 'up_url2'
 Concurrency, speed control also works fine when you provide multiple `url` of course
 
 
-## Support for More Sites
+## Supported sites
 
-biliz also supports some other websites, but their availability may vary as the author is currently busy.
-For further information, please refer to the following [discussion](https://github.com/HFrost0/bilix/discussions/39).
-
-## Basic Download method
-For some basic download scenarios
-* You can directly download a file through the file url
-  ```shell
-  biliz f 'https://xxxx.com/xxxx.mp4'
-  ```
-* you can directly download m3u8 video by url
-  ```shell
-  biliz m3u8 'https:/xxxx.com/xxxx.m3u8'
-  ```
+biliz supports Bilibili only, including b23.tv short links. Support for other sites and generic file and M3U8 downloads has been removed.
 
 ## Proxy
 biliz will use system proxy by default

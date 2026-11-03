@@ -4,11 +4,15 @@
 [![PyPI](https://img.shields.io/pypi/v/biliz?style=flat-square&color=blue&cacheSeconds=300)](https://pypi.org/project/biliz/)
 [![GitHub commit activity](https://img.shields.io/github/commit-activity/m/whitewatercn/biliz)](https://github.com/whitewatercn/biliz/commits/master/)
 
-⚡️Lightning-fast asynchronous download tool for bilibili and more
+⚡️Lightning-fast asynchronous download tool for Bilibili
 
 本项目 biliz 源自 [HFrost0/bilix](https://github.com/HFrost0/bilix)，在其基础上继续维护和改进，并以 `biliz` 发布到 PyPI。感谢原作者及贡献者的开源工作。本项目遵循 Apache 2.0 协议。
 
 biliz is a fork of [HFrost0/bilix](https://github.com/HFrost0/bilix), published on PyPI as `biliz`.
+
+biliz 仅支持哔哩哔哩，其他网站已停止支持。
+
+Bilibili is the only supported site. Support for other sites has been removed.
 
 [Documentation](https://whitewatercn.github.io/biliz/)
 

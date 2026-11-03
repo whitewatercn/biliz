@@ -4,7 +4,7 @@ layout: home
 
 hero:
   name: "biliz"
-  tagline: Lightning-fast asynchronous download tool for bilibili and more
+  tagline: Lightning-fast asynchronous download tool for Bilibili only
   actions:
     - theme: brand
       text: Quickstart

@@ -4,7 +4,7 @@ layout: home
 
 hero:
   name: "biliz"
-  tagline: 快如闪电的异步下载工具，支持bilibili及更多
+  tagline: 仅支持哔哩哔哩的异步下载工具
   actions:
     - theme: brand
       text: 快速上手

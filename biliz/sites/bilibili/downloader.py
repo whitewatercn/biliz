@@ -21,7 +21,7 @@ from danmakuC.bilibili import proto2ass
 
 class DownloaderBilibili(BaseDownloaderPart):
     cookie_domain = "bilibili.com"  # for load cookies quickly
-    pattern = re.compile(r"^https?://([A-Za-z0-9-]+\.)*(bilibili\.com|b23\.tv)")
+    pattern = re.compile(r"^https?://([A-Za-z0-9-]+\.)*(bilibili\.com|b23\.tv)(?=[:/?#]|$)")
 
     def __init__(
             self,
@@ -530,7 +530,7 @@ class DownloaderBilibili(BaseDownloaderPart):
     @classmethod
     @auto_assemble
     def handle(cls, method: str, keys: Tuple[str, ...], options: dict):
-        if cls.pattern.match(keys[0]) or method == 'cate' or method == 'get_cate':
+        if cls.pattern.match(keys[0]) or keys[0].isdecimal() or method in {'cate', 'get_cate'}:
             if method in {'auto', 'a'}:
                 m = cls.parse_url(keys[0])
             elif method in cls._cli_map:
