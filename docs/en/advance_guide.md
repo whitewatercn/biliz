@@ -29,6 +29,16 @@ there are two ways to login
   cookies is the open-source project [browser_cookie3](https://github.com/borisbabic/browser_cookie3).
 
 :::tip
+::: tip Browser credentials on macOS 27
+When you use `-fb edge` or `-fb chrome`, biliz needs access to the browser's local cookie database. In **System Settings → Privacy & Security → Full Disk Access**, manually grant access to the app running biliz, such as Terminal.app. Quit and reopen that app before retrying.
+
+Without permission, importing browser credentials can fail with `browser_cookie3.BrowserCookieError: Unable to read database file`. Grant access as described above and retry, or omit `-fb` to download publicly available videos anonymously.
+
+If you still see `Unable to read database file`, check that you are running the command in the authorized app and try again after fully quitting the browser.
+
+[Apple's Full Disk Access documentation](https://developer.apple.com/documentation/security/accessing-files-from-the-macos-app-sandbox#Request-full-disk-access-to-use-all-files-on-a-Mac)
+:::
+
 If you want to keep logged in, you can use `alias biliz=biliz --cookie xxxxxx` or `alias biliz=biliz -fb chrome`
 to create an alias for the `biliz` command
 :::

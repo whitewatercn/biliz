@@ -25,6 +25,16 @@ biliz v 'url'
   在浏览器中登录之后，使用`-fb --from-browser`参数从浏览器中读取cookie，例如`-fb chrome`，使用这种方法可能需要授权，biliz读取浏览器cookie的
   方式为开源项目[browser_cookie3](https://github.com/borisbabic/browser_cookie3)。
 :::tip
+::: tip macOS 27 浏览器凭证授权
+使用 `-fb edge` 或 `-fb chrome` 导入登录凭证时，biliz 需要读取浏览器的本地 Cookie 数据库。请在 **系统设置 → 隐私与安全性 → 完全磁盘访问权限** 中，为实际运行 biliz 的应用（例如 Terminal.app）手动授权。授权后完全退出并重新打开该应用，再重试命令。
+
+未授权时，导入浏览器凭证可能报错 `browser_cookie3.BrowserCookieError: Unable to read database file`。可以按上面的步骤授权后重试，或者去掉 `-fb` 参数，以匿名方式下载公开视频。
+
+如果已授权仍出现 `Unable to read database file`，请确认命令确实在已授权的应用中运行，并尝试完全退出浏览器后重试。
+
+[Apple 完全磁盘访问权限说明](https://developer.apple.com/documentation/security/accessing-files-from-the-macos-app-sandbox#Request-full-disk-access-to-use-all-files-on-a-Mac)
+:::
+
 如果你总是需要保持登录，在linux和mac系统中你可以使用`alias biliz=biliz --cookie xxxxxx`或`alias biliz=biliz -fb chrome`来为`biliz`命令创建别名
 :::
 
