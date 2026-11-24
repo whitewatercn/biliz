@@ -2,7 +2,8 @@ import asyncio
 import inspect
 import logging
 import re
-import time
+import sys
+
 from functools import wraps
 from typing import Union, Optional, Tuple
 from contextlib import asynccontextmanager
@@ -15,7 +16,7 @@ from biliz.log import logger as dft_logger
 from biliz.download.utils import req_retry, path_check
 from biliz.progress.abc import Progress
 from biliz.progress.cli_progress import CLIProgress
-from biliz.exception import HandleMethodError
+from biliz.exception import HandleError, HandleMethodError
 from pathlib import Path, PurePath
 
 __all__ = ['BaseDownloader']
@@ -201,15 +202,36 @@ class BaseDownloader(metaclass=BaseDownloaderMeta):
             await asyncio.sleep(t)
 
     def update_cookies_from_browser(self, browser: str):
+        name = browser.strip().lower()
+        if sys.platform == 'win32' and name in {'edge', 'chrome'}:
+            raise HandleError(
+                "On Windows, use -fb firefox to import cookies automatically. "
+                "For Edge or Chrome, pass your Bilibili SESSDATA manually with --cookie. "
+                "Details: https://github.com/whitewatercn/biliz/issues/1"
+            )
+
+        import browser_cookie3
+
+        supported = ('load',) + tuple(loader.__name__ for loader in browser_cookie3.all_browsers)
+        if name not in supported:
+            raise HandleError(f"Unsupported browser for -fb: {browser}. Choose from: {', '.join(supported)}")
+
+        loader = getattr(browser_cookie3, name)
         try:
-            a = time.time()
-            import browser_cookie3
-            f = getattr(browser_cookie3, browser.lower())
-            self.logger.debug(f"trying to load cookies from {browser}: {self.cookie_domain}, may need auth")
-            self.client.cookies.update(f(domain_name=self.cookie_domain))
-            self.logger.debug(f"load complete, consumed time: {time.time() - a} s")
-        except AttributeError:
-            raise AttributeError(f"Invalid Browser {browser}")
+            cookies = loader(domain_name=self.cookie_domain)
+        except (browser_cookie3.BrowserCookieError, OSError) as exc:
+            reason = str(exc).lower()
+            if 'decrypt' in reason:
+                message = 'The browser cookies could not be decrypted.'
+            else:
+                message = 'The browser cookie database could not be read. Close the browser and retry.'
+            raise HandleError(
+                f"Could not import cookies from {name}: {message} "
+                "Use --cookie to provide your Bilibili session, or omit -fb for public videos."
+            ) from exc
+        if not cookies:
+            raise HandleError(f"No matching cookies found in {name}. Sign in to Bilibili and retry.")
+        self.client.cookies.update(cookies)
 
     @classmethod
     def _decide_handle(cls, method: str, keys: Tuple[str, ...], options: dict) -> bool:

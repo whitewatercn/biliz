@@ -75,7 +75,7 @@ def valid_sess_data(sess_data: Optional[str]) -> str:
     # https://github.com/HFrost0/bilix/pull/114https://github.com/HFrost0/bilix/pull/114
     if sess_data and not re.search(r'(%[0-9A-Fa-f]{2})|(\+)', sess_data):
         sess_data = quote_plus(sess_data)
-        logger.debug(f"sess_data encoded: {sess_data}")
+
     return sess_data
 
 

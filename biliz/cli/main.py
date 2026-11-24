@@ -363,7 +363,7 @@ class BasedTimeRange(click.ParamType):
 def main(**kwargs):
     loop = asyncio.new_event_loop()  # avoid deprecated warning in 3.11
     asyncio.set_event_loop(loop)
-    logger.debug(f'CLI KEY METHOD and OPTIONS: {kwargs}')
+    logger.debug('CLI options: %s', {key: value for key, value in kwargs.items() if key != 'cookie'})
     try:
         # CLIProgress.switch_theme(gs="cyan", bs="dark_cyan")
         CLIProgress.start()  # start progress

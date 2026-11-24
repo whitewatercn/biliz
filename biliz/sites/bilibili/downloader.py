@@ -54,14 +54,15 @@ class DownloaderBilibili(BaseDownloaderPart):
         client = client or httpx.AsyncClient(**api.dft_client_settings)
         super(DownloaderBilibili, self).__init__(
             client=client,
-            browser=browser,
+            browser=None if sess_data else browser,
             speed_limit=speed_limit,
             stream_retry=stream_retry,
             progress=progress,
             logger=logger,
             part_concurrency=part_concurrency,
         )
-        client.cookies.set('SESSDATA', valid_sess_data(sess_data))
+        if sess_data:
+            client.cookies.set('SESSDATA', valid_sess_data(sess_data), domain='.bilibili.com')
         self._cate_meta = None
         self.v_sema = asyncio.Semaphore(video_concurrency)
         self.api_sema = asyncio.Semaphore(video_concurrency)
